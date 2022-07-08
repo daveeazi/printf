@@ -1,5 +1,7 @@
 # C - printf
 
+![](https://github.com/daveeazi/printf/blob/master/giy.jpg)
+
 **In this project, we'll learn to work collaboratively using GitHub to create a printf function.**
 
 ### We are allowed to use these functions or macros only:
