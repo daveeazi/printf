@@ -1,8 +1,8 @@
 # C - printf
 
-### In this project, we'll learn to work collaboratively using GitHub to create a printf function.
+**In this project, we'll learn to work collaboratively using GitHub to create a printf function.**
 
-## We are allowed to use these functions or macros only:
+### We are allowed to use these functions or macros only:
 
 ---
 
