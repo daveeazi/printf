@@ -1,48 +1,51 @@
 #include "main.h"
-#include <stddef.h>
-#include <stdlib.h>
-#include <stdio.h>
+
 /**
- * _printf - Build out the printf function
- * @format: string passed with possible format specifiers
- * Return: number of characters printed
+ * _printf - formatted output conversion and print data.
+ * @format: input string.
+ *
+ * Return: number of chars printed.
  */
 int _printf(const char *format, ...)
 {
-	int i, blen, hlen;
-	double totalBuffer;
-	double *total;
-	va_list argp;
-	char buffer[BUFSIZE], *holder;
-	char *(*pointer_get_valid)(va_list);
+	unsigned int i = 0, len = 0, ibuf = 0;
+	va_list arguments;
+	int (*function)(va_list, char *, unsigned int);
+	char *buffer;
 
-	for (i = 0; i < BUFSIZE; i++)
-	{
-		buffer[i] = 0;
-	}
-	totalBuffer = 0;
-	pointer_get_valid = NULL;
-	total = &totalBuffer;
-	va_start(argp, format);
-	for (i = blen = hlen = 0; format && format[i]; i++)
+	va_start(arguments, format), buffer = malloc(sizeof(char) * 1024);
+	if (!format || !buffer || (format[i] == '%' && !format[i + 1]))
+		return (-1);
+	if (!format[i])
+		return (0);
+	for (i = 0; format && format[i]; i++)
 	{
 		if (format[i] == '%')
 		{
-			pointer_get_valid = get_valid_type(format[i + 1]);
-			holder = (pointer_get_valid == NULL) ?
-				found_nothing(format[i + 1]) :
-				pointer_get_valid(argp);
-			hlen = _strlen(holder);
-			blen = alloc_buffer(holder, hlen, buffer, blen, total);
-			i++;
+			if (format[i + 1] == '\0')
+			{	print_buf(buffer, ibuf), free(buffer), va_end(arguments);
+				return (-1);
+			}
+			else
+			{	function = get_print_func(format, i + 1);
+				if (function == NULL)
+				{
+					if (format[i + 1] == ' ' && !format[i + 2])
+						return (-1);
+					handl_buf(buffer, format[i], ibuf), len++, i--;
+				}
+				else
+				{
+					len += function(arguments, buffer, ibuf);
+					i += ev_print_func(format, i + 1);
+				}
+			} i++;
 		}
 		else
-		{
-			holder = ctos(format[i]);
-			blen = alloc_buffer(holder, 1, buffer, blen, total);
-		}
+			handl_buf(buffer, format[i], ibuf), len++;
+		for (ibuf = len; ibuf > 1024; ibuf -= 1024)
+			;
 	}
-	va_end(argp);
-	_puts(buffer, blen);
-	return (totalBuffer + blen);
+	print_buf(buffer, ibuf), free(buffer), va_end(arguments);
+	return (len);
 }
