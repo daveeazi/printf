@@ -41,3 +41,7 @@ The `_printf()` function produces output according to a format which is describe
 * As a consequence, be careful not to push any c file containing a main function in the root directory of your project (you could have a test folder containing all your tests files including main functions)
 
 * You might want to look at the gcc flag `-Wno-format` when testing with your `_printf` and the standard `printf`
+
+**Authors**
+[David Atat](https://github.com/daveeazi)
+[Alphonsus Oshiole](https://github.com/Alphydoo)
