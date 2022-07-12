@@ -1,13 +1,14 @@
 #ifndef MAIN_H
 #define MAIN_H
+#define NULL ((void *)0)
 
-int _printf(const char *format, ...);
 int _putchar(char c);
-int print_string(char *);
-int print_decimal(int value);
-long long int power(int base, int x);
-long long convertToDecimal(int Number, int base);
-int print_binary(int number);
-int print_unsigned(unsigned int number);
+int _print_str(char *string);
+int _print_int(long int var);
+int _printf(const char *format, ...);
+int to_Binary(unsigned int n);
+int to_Octal(unsigned int n);
+int _power_recursion(int x, int y);
+int to_Hexa(unsigned int num);
 
 #endif
