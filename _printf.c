@@ -104,5 +104,4 @@ int _printf(const char *format, ...)
 	_putchar(BUF_FLUSH);
 	va_end(ap);
 	return (sum);
->>>>>>> dd9a74beceb3bb7f4b573d3c5f5d02bd43342c54
 }
