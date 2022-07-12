@@ -7,6 +7,7 @@
  *
  * Return: number chars printed
  */
+
 int print_char(va_list ap, params_t *params)
 {
 	char pad_char = ' ';
@@ -28,6 +29,7 @@ int print_char(va_list ap, params_t *params)
  *
  * Return: number chars printed
  */
+
 int print_int(va_list ap, params_t *params)
 {
 	long l;
