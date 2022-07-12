@@ -6,6 +6,7 @@
  *
  * Return: void
  */
+
 int _puts(char *str)
 {
 	char *a = str;
@@ -22,6 +23,7 @@ int _puts(char *str)
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
+
 int _putchar(int c)
 {
 	static int i;
