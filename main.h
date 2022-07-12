@@ -37,6 +37,7 @@
  * @l_modifier: on if l_modifier is specified
  *
  */
+
 typedef struct parameters
 {
 	unsigned int unsign			: 1;
@@ -57,6 +58,7 @@ typedef struct parameters
  * @specifier: format token
  * @f: The function associated
  */
+
 typedef struct specifier
 {
 	char *specifier;
